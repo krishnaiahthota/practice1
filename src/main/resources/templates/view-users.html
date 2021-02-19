@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+     >
+    <head>
+        <title>View Users</title>
+    </head>
+    <body>
+        <div align="center" >
+            <h2 > these are the users currently active. </h2>
+            <table border="1">
+                <tr>
+                    <th>Name</th> <th>E-Mail</th>
+                </tr>
+                <tr th:each="user, iStat :${users}"
+                    th:style="${iStat.odd}? 'font-weight: bold;'"
+                    th:alt-title="${iStat.even}? 'even' : 'odd'">
+                    <td th:text="${user.name}" />
+                    <td th:text="${user.email}" />
+                </tr>
+            </table>
+
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
+                <a th:href="@{/addUser}" >Add New User</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      >
+    <head>
+        <title>Add New User</title>
+    </head>
+    <body>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')" align="center">
+            <h3>Fill the details below to adda new user.</h3>
+            <form action="#" th:action="@{/save}" method="post" th:object="${user}">
+                <table>
+                    <tr>
+                        <td><label>Name : </label></td>
+                        <td><input type="text" th:field="*{name}" /> <br/></td>
+                    </tr>
+                    <tr>
+                        <td><label>E-mail address : </label></td>
+                        <td><input type="text" th:field="*{email}" /> <br/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password : </label></td>
+                        <td><input type="password" th:field="*{password}" /> <br/></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" >Save</button></td>
+                        <td><button type="reset" >Clear</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

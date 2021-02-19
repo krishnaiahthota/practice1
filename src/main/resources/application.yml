@@ -1,0 +1,16 @@
+server:
+  servlet:
+    context-path: /practice
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/practice
+    username: practice
+    password: practice
+    initialization-mode: always
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
